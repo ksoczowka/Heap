@@ -3,6 +3,7 @@
 #include <climits>
 #include <vector>
 
+namespace my {
 template<typename T>
 class Heap {
 public:
@@ -19,7 +20,7 @@ public:
 
     void addNode(const T& value, const int& priority);
     void addNode(const Node& node);
-    
+
     void popTop();
 
     bool empty() const { return (nodes.size() <= 1); }
@@ -38,5 +39,5 @@ private:
     
     void downheap(int index);
 };
-
+}
 #include "heap.tpp"

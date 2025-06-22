@@ -17,7 +17,7 @@ void Heap<T>::addNode(const Node& node) {
 
 template<typename T>
 void Heap<T>::popTop() {
-    if(empty()) return;
+    __glibcxx_requires_nonempty();
     nodes[1].priority = -(INT_MAX - 1);
     downheap(1);
     nodes.pop_back();

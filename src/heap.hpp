@@ -17,6 +17,8 @@ public:
 
         // Checks priority of `Nodes`. Returns `true` if priorities are the same, `false` otherwise.
         bool operator==(const Node& other) { return (priority == other.priority); }
+        // Checks priority of `Nodes`. Returns `true` if priorities aren't the same, `false` otherwise.
+        bool operator!=(const Node& other) { return (priority != other.priority); }
         // Checks priority of `Nodes`. Returns `true` if `this` priority is greater than `other` priority, `false` otherwise.
         bool operator>(const Node& other) { return (priority > other.priority); }
         // Checks priority of `Nodes`. Returns `true` if `this` priority is greater than or equal to `other` priority, `false` otherwise.

@@ -18,14 +18,18 @@ public:
     }
 
     void addNode(const T& value, const int& priority);
+    void addNode(const Node& node);
+    
     void popTop();
 
-    bool empty() const { return nodes.empty(); }
-    size_t size() const { return nodes.size(); }
+    bool empty() const { return (nodes.size() <= 1); }
+    size_t size() const { return nodes.size() - 1; }
     
     void showKeys() const;
     void showValues() const;
     void showKeysAndValues() const;
+
+    Node top() const { __glibcxx_requires_nonempty(); return nodes[1]; }
 
 private:
     std::vector<Node> nodes{};

@@ -10,6 +10,12 @@ void Heap<T>::addNode(const T& value, const int& priority) {
 }
 
 template<typename T>
+void Heap<T>::addNode(const Node& node) {
+    nodes.push_back(node);
+    upheap(nodes.size() - 1);
+}
+
+template<typename T>
 void Heap<T>::popTop() {
     if(empty()) return;
     nodes[1].priority = -(INT_MAX - 1);

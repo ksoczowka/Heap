@@ -1,10 +1,20 @@
 #include "heap.hpp"
 
+#include <iostream>
+
 template<typename T>
-void Heap<T>::addNode(T value, int priority) {
-        nodes.push_back(Node(value, priority));
-        upheap(nodes.size() - 1);
-    }
+void Heap<T>::addNode(const T& value, const int& priority) {
+    nodes.push_back(Node(value, priority));
+    upheap(nodes.size() - 1);
+}
+
+template<typename T>
+void Heap<T>::popTop() {
+    if(empty()) return;
+    nodes[1].priority = -(INT_MAX - 1);
+    downheap(1);
+    nodes.pop_back();
+}
 
 template<typename T>
 void Heap<T>::showKeys() const {
@@ -52,7 +62,7 @@ void Heap<T>::downheap(int index) {
 
             if (nodes[index].priority >= nodes[biggerChild].priority)
                 break;
-            std::swap(nodes[index].priority, nodes[biggerChild].priority);
+            std::swap(nodes[index], nodes[biggerChild]);
             index = biggerChild;
         }
     }

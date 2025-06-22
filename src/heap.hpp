@@ -1,6 +1,6 @@
 #pragma once
 
-#include <iostream>
+#include <climits>
 #include <vector>
 
 template<typename T>
@@ -17,7 +17,11 @@ public:
         nodes.push_back(Node(T{}, INT_MAX));
     }
 
-    void addNode(T value, int priority);
+    void addNode(const T& value, const int& priority);
+    void popTop();
+
+    bool empty() const { return nodes.empty(); }
+    size_t size() const { return nodes.size(); }
     
     void showKeys() const;
     void showValues() const;

@@ -20,7 +20,7 @@ int main() {
         map[std::string(1, c)] = dist(seed);
     }
 
-    Heap<std::string> heap;
+    my::Heap<std::string> heap;
 
     for(const auto& [key, value] : map) {
         heap.addNode(key, value);

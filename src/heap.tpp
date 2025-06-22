@@ -2,6 +2,7 @@
 
 #include <iostream>
 
+namespace my {
 template<typename T>
 void Heap<T>::addNode(const T& value, const int& priority) {
     nodes.push_back(Node(value, priority));
@@ -52,17 +53,18 @@ void Heap<T>::upheap(int index) {
 
 template<typename T>
 void Heap<T>::downheap(int index) {
-        while (index * 2 <= nodes.size() - 1) {
-            int leftChild = index * 2;
-            int rightChild = index * 2 + 1;
-            int biggerChild = leftChild;
+    while (index * 2 <= nodes.size() - 1) {
+        int leftChild = index * 2;
+        int rightChild = index * 2 + 1;
+        int biggerChild = leftChild;
 
-            if (rightChild <= nodes.size() && nodes[rightChild].priority > nodes[leftChild].priority)
-                biggerChild = rightChild;
+        if (rightChild <= nodes.size() && nodes[rightChild].priority > nodes[leftChild].priority)
+            biggerChild = rightChild;
 
-            if (nodes[index].priority >= nodes[biggerChild].priority)
-                break;
-            std::swap(nodes[index], nodes[biggerChild]);
-            index = biggerChild;
-        }
+        if (nodes[index].priority >= nodes[biggerChild].priority)
+            break;
+        std::swap(nodes[index], nodes[biggerChild]);
+        index = biggerChild;
     }
+}
+}

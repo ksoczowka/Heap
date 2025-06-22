@@ -29,9 +29,7 @@ public:
         bool operator<=(const Node& other) { return (priority <= other.priority); }
     };
 
-    Heap() {
-        nodes.push_back(Node(T{}, INT_MAX));
-    }
+    Heap() {}
 
     // Adds `Node` to the heap based on current `T` value and `int` priority.
     void addNode(const T& value, const int& priority);

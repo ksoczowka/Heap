@@ -26,7 +26,6 @@ void Heap<T>::popTop() {
 template<typename T>
 void Heap<T>::showKeys() const {
     for (const auto& node : nodes) {
-        if(node.priority == INT_MAX) continue;
         std::cout << node.priority << ' ';
     }
 }
@@ -34,7 +33,6 @@ void Heap<T>::showKeys() const {
 template<typename T>
 void Heap<T>::showValues() const {
     for (const auto& node : nodes) {
-        if(node.priority == INT_MAX) continue;
         std::cout << node.value << ' ';
     }
 }
@@ -42,15 +40,14 @@ void Heap<T>::showValues() const {
 template<typename T>
 void Heap<T>::showKeysAndValues() const {
     for (const auto& node : nodes) {
-        if(node.priority == INT_MAX) continue;
         std::cout << node.priority << " : " << node.value << '\n';
     }
 }
 
 template<typename T>
 void Heap<T>::upheap(size_t index) {
-    int parent = index / 2;
-    while (index > 1 && nodes[parent].priority < nodes[index].priority) {
+    int parent = (index + 1) / 2 - 1;
+    while (index > 1 && nodes[parent] < nodes[index]) {
         std::swap(nodes[parent], nodes[index]);
         index = parent;
         parent = index / 2;
@@ -60,14 +57,14 @@ void Heap<T>::upheap(size_t index) {
 template<typename T>
 void Heap<T>::downheap(size_t index) {
     while (index * 2 <= nodes.size() - 1) {
-        int leftChild = index * 2;
-        int rightChild = index * 2 + 1;
+        int leftChild = (index + 1) * 2 - 1;
+        int rightChild = (index + 1) * 2;
         int biggerChild = leftChild;
 
-        if (rightChild <= nodes.size() && nodes[rightChild].priority > nodes[leftChild].priority)
+        if (rightChild <= nodes.size() && nodes[rightChild] > nodes[leftChild])
             biggerChild = rightChild;
 
-        if (nodes[index].priority >= nodes[biggerChild].priority)
+        if (nodes[index] >= nodes[biggerChild])
             break;
         std::swap(nodes[index], nodes[biggerChild]);
         index = biggerChild;

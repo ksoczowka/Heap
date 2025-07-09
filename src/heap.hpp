@@ -29,9 +29,7 @@ public:
         bool operator<=(const Node& other) { return (priority <= other.priority); }
     };
 
-    Heap() {
-        nodes.push_back(Node(T{}, INT_MAX));
-    }
+    Heap() {}
 
     // Adds `Node` to the heap based on current `T` value and `int` priority.
     void addNode(const T& value, const int& priority);
@@ -42,9 +40,9 @@ public:
     void popTop();
 
     // Returns `true` if heap is empty and `false` if it isn't.
-    bool empty() const { return (nodes.size() <= 1); }
+    bool empty() const { return (nodes.size() < 1); }
     // Returns `size_t` size of the heap .
-    size_t size() const { return nodes.size() - 1; }
+    size_t size() const { return nodes.size(); }
     
     // Function to display with `std::cout` priorities (keys) [`int`] of the `Nodes` in the heap.
     void showKeys() const;

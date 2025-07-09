@@ -18,8 +18,8 @@ void Heap<T>::addNode(const Node& node) {
 template<typename T>
 void Heap<T>::popTop() {
     __glibcxx_requires_nonempty();
-    nodes[1].priority = -(INT_MAX - 1);
-    downheap(1);
+    top().priority = -(INT_MAX - 1);
+    downheap(0);
     nodes.pop_back();
 }
 
@@ -47,7 +47,7 @@ void Heap<T>::showKeysAndValues() const {
 template<typename T>
 void Heap<T>::upheap(size_t index) {
     int parent = (index + 1) / 2 - 1;
-    while (index > 1 && nodes[parent] < nodes[index]) {
+    while (index > 0 && nodes[parent] < nodes[index]) {
         std::swap(nodes[parent], nodes[index]);
         index = parent;
         parent = index / 2;
